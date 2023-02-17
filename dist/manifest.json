@@ -4,23 +4,23 @@
     "start_url": ".",
     "display": "standalone",
     "background_color": "#ffffff",
-    "description": "Calculates Your Routine",
+    "description": "Manages your Routine",
     "theme_color": "#ffffff",
     "icons": [
         {
-            "src": "icons/icon.png",
+            "src": "icons/icon192.png",
             "sizes": "192x192",
             "type": "image/png",
             "purpose": "any"
         },
         {
-            "src": "icons/icon.png",
+            "src": "icons/icon512.png",
             "sizes": "512x512",
             "type": "image/png",
-            "purpose": "maskable"
+            "purpose": "any"
         },
         {
-            "src": "icons/icon.png",
+            "src": "icons/icon196.png",
             "sizes": "196x196",
             "type": "image/png",
             "purpose": "any"
@@ -28,29 +28,24 @@
         {
             "src": "icons/favicon.ico", 
             "type": "image/png",
-            "purpose": "maskable"
+            "purpose": "any"
         }
     ],
     "screenshots": [
         {
-            "src": "icons/icon.png",
+            "src": "images/screen/screen 1.png",
             "type": "image/png",
-            "sizes": "512x512"
+            "sizes": "500x1080"
         },
         {
-            "src": "icons/icon.png",
-            "type": "image/jpg",
-            "sizes": "512x512"
+            "src": "images/screen/screen 2.png",
+            "type": "image/png",
+            "sizes": "500x1080"
         },
         {
-            "src": "icons/icon.png",
-            "type": "image/jpg",
-            "sizes": "512x512"
-        },
-        {
-            "src": "icons/icon.png",
-            "type": "image/jpg",
-            "sizes": "512x512"
+            "src": "images/screen/screen 3.png",
+            "type": "image/png",
+            "sizes": "500x1080"
         }
     ],
     "shortcuts": [
