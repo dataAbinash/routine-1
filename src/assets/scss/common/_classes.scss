@@ -101,6 +101,7 @@ button.btn-full-width.gray {
     border-radius: var(--border-radius);
     padding: 1em 0.5em 1em 3em;
     outline: none;
+    // outline: 1px solid var(--input-bg);
     background-image: url('../icons/src/search_black_48dp.svg');
     background-repeat: no-repeat;
     background-position: 1em center;
@@ -130,7 +131,7 @@ button.btn-full-width.gray {
 
 
 
-.main-bg {
+.bg-main {
     background-color: var(--bg);
 }
 
@@ -141,7 +142,7 @@ button.btn-full-width.gray {
 }
 
 .screen{
-    min-height: 100vh;
+    min-height: 100dvh;
 }
 
 .screen-navbar {
@@ -150,7 +151,7 @@ button.btn-full-width.gray {
 
 .tap,
 .tap99 {
-    transition-duration: 200ms;
+    transition-duration: 100ms;
 
 }
 
@@ -181,7 +182,10 @@ button.btn-full-width.gray {
 .bg-slider {
     background-color: var(--bg-slider);
 }
-
+.bg-backdrop{
+    background-color: var(--bg-backdrop);
+    backdrop-filter: blur(10px);
+}
 .glowing {
     border: 2px solid transparent;
     animation: glow 1.5s infinite;
@@ -197,4 +201,16 @@ button.btn-full-width.gray {
     50% {
         border-color: transparent;
     }
+}
+
+.debug{
+    outline: 1px solid red;
+    *{
+        outline: 1px solid red;
+        
+    }
+}
+.d{
+    outline: 1px solid red;
+
 }

@@ -7,95 +7,108 @@ import NavBar from '../components/NavBar'
 import FloatingButton from '../components/FloatingButton'
 function BlankEmojiLeft() {
 	return (<div className="left opacity-0">
-		<div className="emoji main-bg flex-center rounded-xl px-2 py-0 flex-1 ">
-			<img src={Emoji.get('🧑🏻‍💻')} className='w-[25px] h-0' />
+		<div className="emoji bg-main flex-center rounded-xl px-2 py-0 flex-1 ">
+			<img src={Emoji.get('🧑🏻‍💻')} className='w-[26px] h-0' />
 		</div>
 	</div>)
 }
 function Home() {
 	return (
 		<div className="home-screen screen-navbar">
-			<header className='px-5 py-3 fixed top-0 main-bg max-h-[110px] overflow-hidden w-full'>
-				<p className='text-xl font-bold pb-1 pl-[0.1em]'>Good Morning <TextEmoji emoji="🌞" /></p>
+			<header className='px-5 py-3 fixed top-0 bg-main max-h-[115px] overflow-hidden w-full'>
+				<p className='text-xl font-bold pb-2 pl-[0.1em]'>{/*<TextEmoji emoji="🗓️" />*/} 17 Feb, Monday</p>
 				<input type="search" placeholder='Search Routine' className='search-full' />
 			</header>
-			<section className='p-5 pt-[110px] h-[500vh]'>
+			<section className='p-[1.2rem] pt-[115px]'>
 				<div className="routines flex flex-col gap-3">
-					<div className="routine flex flex-col p-4 rounded-3xl gap-1 bg-accent tap99">
+					<div className="routine flex flex-col p-[1.2rem] rounded-[1.6rem] bg-accent tap99">
 						<div className="top flex flex-row gap-3">
 							<div className="left">
-								<div className="emoji main-bg aspect-square flex-center rounded-xl p-2 flex-1">
-									<img src={Emoji.get('🧑🏻‍💻')} className='w-[25px] aspect-square' />
+								<div className="emoji bg-main aspect-square flex-center rounded-xl p-2 flex-1">
+									<img src={Emoji.get('🧑🏻‍💻')} className='w-[26px] aspect-square' />
 								</div>
 							</div>
 							<div className="right flex-1 flex flex-row justify-between flex-center gap-1">
-								<div className="name"><p className='font-semibold text-[0.95rem] text-white'>JavaScript Coding</p></div>
-								<div className="time"><p className='text-[0.6rem]  font-semibold text-white/80'>7.00AM <br /> 8.00AM</p></div>
+								<div className="name"><p className='font-semibold text-base text-white'>JavaScript Coding</p></div>
+								<div className="time"><p className='text-[0.6rem]  font-medium text-white/80 text-right'>7.00AM <br /> 8.00AM</p></div>
 							</div>
 						</div>
 						<div className="bottom flex flex-row gap-3">
 							<BlankEmojiLeft />
 							<div className="right flex-1 flex flex-row justify-between flex-center">
-								<div className="description font-medium text-[0.8rem] text-white/80"><p>Practice Data Structures and Algorithms using JavaScript</p></div>
+								<div className="description font-medium text-[0.75rem] text-white/80"><p>Practice Data Structures and Algorithms using JavaScript</p></div>
 							</div>
 						</div>
 						<div className="bottom flex flex-row gap-3">
 							<BlankEmojiLeft />
-							<div className="right w-full flex-1">
+							<div className="right w-full flex-1 mt-2">
 								<div className="sliderContainer flex-row flex gap-3 justify-center items-center">
 									<div className="slider w-full h-1 bg-[#ffffff55] rounded-xl">
 										<div className="slide bg-white w-[50%] h-1 rounded-xl"></div>
 									</div>
-									<div className="percentage"><p className='text-xs font-semibold text-white/80'>32%</p></div>
+									<div className="percentage"><p className='text-xs font-medium text-white/80 '>32%</p></div>
 								</div>
 							</div>
 						</div>
 					</div>
 
-					<div className="routine flex flex-col p-4 rounded-3xl gap-1 input-bg">
+					<div className="routine flex flex-col p-[1.2rem] rounded-[1.6rem] gap-1 input-bg">
 						<div className="top flex flex-row gap-3">
 							<div className="left">
-								<div className="emoji main-bg aspect-square flex-center rounded-xl p-2 flex-1">
-									<img src={Emoji.get('🧑🏻‍🔬')} className='w-[25px] aspect-square' />
+								<div className="emoji bg-main aspect-square flex-center rounded-xl p-2 flex-1">
+									<img src={Emoji.get('🧑🏻‍🔬')} className='w-[26px] aspect-square' />
 								</div>
 							</div>
 							<div className="right flex-1 flex flex-row justify-between flex-center gap-1">
-								<div className="name"><p className='font-semibold text-[0.95rem] '>Chemistry Class </p></div>
-								<div className="time"><p className='text-[0.6rem]  font-semibold text-secondary'>11.00AM <br /> 12.30PM</p></div>
+								<div className="name"><p className='font-semibold text-base'>Chemistry Class </p></div>
+								<div className="time"><p className='text-[0.6rem]  font-medium text-secondary text-right'>11.00AM <br /> 12.30PM</p></div>
 							</div>
 						</div>
 						<div className="bottom flex flex-row gap-3">
 							<BlankEmojiLeft />
 							<div className="right flex-1 flex flex-row justify-between flex-center">
-								<div className="description font-medium text-[0.8rem]"><p>Practice Data Structures and Algorithms using JavaScript</p></div>
+								<div className="description font-medium text-[0.75rem] text-secondary"><p>Practice Data Structures and Algorithms using JavaScript</p></div>
 							</div>
 						</div>
 					</div>
 
-					<div className="routine flex flex-col p-4 rounded-3xl gap-1 input-bg">
+					<div className="routine flex flex-col p-[1.2rem] rounded-[1.6rem] gap-1 input-bg">
 						<div className="top flex flex-row gap-3">
 							<div className="left">
-								<div className="emoji main-bg aspect-square flex-center rounded-xl p-2 flex-1">
-									<img src={Emoji.get('🎂')} className='w-[25px] aspect-square' />
+								<div className="emoji bg-main aspect-square flex-center rounded-xl p-2 flex-1">
+									<img src={Emoji.get('🎂')} className='w-[26px] aspect-square' />
 								</div>
 							</div>
 							<div className="right flex-1 flex flex-row justify-between flex-center gap-1">
-								<div className="name"><p className='font-semibold text-[0.95rem] '>Happy Birthday</p></div>
-								<div className="time"><p className='text-[0.6rem]  font-semibold text-secondary'>11.00AM</p></div>
+								<div className="name"><p className='font-semibold text-base '>Happy Birthday Abinash</p></div>
+								<div className="time"><p className='text-[0.6rem]  font-semibold text-secondary text-right'>11.00AM</p></div>
 							</div>
 						</div>
 					</div>
 
-					<div className="routine flex flex-col p-4 rounded-3xl gap-1 input-bg">
+					<div className="routine flex flex-col p-[1.2rem] rounded-[1.6rem] gap-1 input-bg">
 						<div className="top flex flex-row gap-3">
 							<div className="left">
-								<div className="emoji main-bg aspect-square flex-center rounded-xl p-2 flex-1">
-									<img src={Emoji.get('🎓')} className='w-[25px] aspect-square' />
+								<div className="emoji bg-main aspect-square flex-center rounded-xl p-2 flex-1">
+									<img src={Emoji.get('😀')} className='w-[26px] aspect-square' />
 								</div>
 							</div>
 							<div className="right flex-1 flex flex-row justify-between flex-center gap-1">
-								<div className="name"><p className='font-semibold text-[0.95rem] '>Graduated</p></div>
-								<div className="time"><p className='text-[0.6rem]  font-semibold text-secondary'>11.00AM <br />1.00PM</p></div>
+								<div className="name"><p className='font-semibold text-base'>Graduated</p></div>
+								<div className="time"><p className='text-[0.6rem]  font-semibold text-secondary text-right'>11.00AM <br />1.00PM</p></div>
+							</div>
+						</div>
+					</div>
+					<div className="routine flex flex-col p-[1.2rem] rounded-[1.6rem] gap-1 input-bg">
+						<div className="top flex flex-row gap-3">
+							<div className="left">
+								<div className="emoji bg-main aspect-square flex-center rounded-xl p-2 flex-1">
+									<img src={Emoji.get('☀️')} className='w-[26px] aspect-square' />
+								</div>
+							</div>
+							<div className="right flex-1 flex flex-row justify-between flex-center gap-1">
+								<div className="name"><p className='font-semibold text-base '>Good Morning</p></div>
+								<div className="time"><p className='text-[0.6rem]  font-semibold text-secondary text-right'>11.00AM <br />1.00PM</p></div>
 							</div>
 						</div>
 					</div>
