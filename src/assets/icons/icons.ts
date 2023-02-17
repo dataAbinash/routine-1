@@ -16,6 +16,7 @@ import calender from './src/calender.svg'
 import check_solid from './src/check-solid.svg'
 // import x_solid from './src/x-solid.svg'
 import xmark_solid from './src/xmark-solid.svg'
+import notification from './src/notification.svg'
 
 
 const icons = {
@@ -24,7 +25,7 @@ const icons = {
     more, more_broken,
     person, person_broken, left_arrow_solid, left_arrow_long_solid,
     home_black_48dp, routines, calender,
-    check_solid, xmark_solid
+    check_solid, xmark_solid, notification
 }
 
 
