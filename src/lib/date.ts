@@ -1,4 +1,3 @@
-
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Spe', 'Oct', 'Nov', 'Dec']
 const day = [
     'Sunday',
@@ -12,7 +11,6 @@ const day = [
 function currentDate() {
     const date = new Date()
     return ` ${day[date.getDay()]}, ${date.getDate()}  ${months[date.getMonth()]} `
-
 }
 
 export default currentDate
