@@ -9,7 +9,7 @@ import searchByDate, { Routine, searchActiveRoutine } from '../lib/dateMethods'
 import ls from '../lib/storage'
 import TextEmoji from '../components/TextEmoji'
 import { useNavigate } from 'react-router-dom'
-console.log("Hey")
+
 
 
 function BlankEmojiLeft() {
@@ -25,6 +25,9 @@ function Home() {
 	const [screenRoutines, uTodayRoutine] = useState<any>([])
 	const navigate = useNavigate()
 	useEffect(() => {
+		// Check first time 
+		const firstTime = ls.get('firstTime')
+		if (!firstTime) { navigate('/start', { replace: true }) }
 		const routines = JSON.parse(ls.get('routines') || '[]')
 		const todayRoutines: Routine[] = searchByDate(new Date(), routines)
 		searchActiveRoutine(todayRoutines)
@@ -36,7 +39,7 @@ function Home() {
 			<header className='px-5 py-3 fixed top-0 bg-main max-h-[120px] overflow-hidden w-full z-20'>
 				<div className="heading flex flex-row justify-between items-center gap-2 pb-1">
 					<p className='text-xl font-bold '>{/*<TextEmoji emoji="🗓️" />*/}{getCurrentDate()}</p>
-					<div className="notification tap" onClick={()=>navigate('/notifications',{replace:true})}>
+					<div className="notification tap" onClick={() => navigate('/notifications', { replace: true })}>
 						<div className="dot absolute h-2 w-2 bg-accent mt-2 ml-7 rounded-full"></div>
 						<img src={icons.notification} className='w-10 p-3 rounded-md opacity-80' />
 					</div>
@@ -56,12 +59,17 @@ function Home() {
 
 function GetRoutines(routines: Array<Routine>) {
 	console.log(routines)
-
+	if (routines.length === 0)
+		return <div className='h-[calc(100dvh-400px)] flex flex-col items-center justify-center'>
+			<p className='text-[#777]/50 text-center my-3 text-lg font-medium'>No routine found</p>
+			<p className='text-xs text-center text-[#777]/50 font-medium'>Go to Routines tab to see all routines</p>
+			{/* <p className='text-2xl'><span className='text-[#777]/50 text-center my-3 text-lg font-medium'>there </span><TextEmoji emoji='👉🏻'/></p> */}
+		</div>
 
 	return routines.map((routine: Routine, index) => {
 		if (routine.type === 'notification') {
 			// return <></>
-			return <p className='text-[#777]/50 text-center my-5 text-sm font-semibold' key={index}>{routine.name}</p>
+			return <p className='text-[#777]/50 text-center my-5 text-sm font-medium' key={index}>{routine.name}</p>
 		}
 		const isActiveRoutine = routine.status === 'active'
 		const isCompleted = routine.status === 'done'

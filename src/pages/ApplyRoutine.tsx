@@ -1,7 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import images from "../assets/images/images";
 import TextEmoji from "../components/TextEmoji";
-import { Link } from "react-router-dom";
+import routines from "../lib/sampleTypes";
+import ls from '../lib/storage'
+
+// Store Data here - temporary code
+ls.set('routines', JSON.stringify(routines));
+ls.set('firstTime', 'true');
+
+
 export default function ApplyRoutine() {
     const navigate = useNavigate()
     return (
@@ -20,7 +27,7 @@ export default function ApplyRoutine() {
                 <button onClick={() => navigate('', { replace: true })} className="flex-[1.5] no-highlight select-none rounded-2xl bg-dark text-white  mx-auto block p-[1.3em] duration-150 active:scale-[0.98] text-sm">
                     Skip
                 </button>
-                <button onClick={() => navigate('/home', { replace: true })} className="flex-[2.5] no-highlight select-none rounded-2xl bg-accent text-white  mx-auto block p-[1.3em] duration-150 active:scale-[0.98] text-sm">
+                <button onClick={() => navigate('/', { replace: true })} className="flex-[2.5] no-highlight select-none rounded-2xl bg-accent text-white  mx-auto block p-[1.3em] duration-150 active:scale-[0.98] text-sm">
                     Apply Routine
                 </button>
                 {/* <p className="text-center text-xs pt-2 text-black/60">See <Link to='' className="text-link">Terms and Conditions</Link> before continuing.</p> */}

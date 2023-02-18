@@ -6,6 +6,8 @@ import Emoji from 'emoji-store'
 import ls from '../lib/storage'
 import { Routine } from '../lib/dateMethods'
 import FloatingButton from '../components/FloatingButton'
+import { capitalize } from '../lib/lib'
+
 function Routines() {
     const [screenRoutines, uTodayRoutine] = useState<any>([])
     useEffect(() => {
@@ -16,7 +18,7 @@ function Routines() {
         // console.clear()
     }, [])
     return (
-        <div className="home-screen screen-navbar">
+        <div className="home-screen screen-navbar select-none">
             <header className='px-5 py-3 fixed top-0 bg-main max-h-[120px] overflow-hidden w-full z-20'>
                 <div className="heading flex flex-row justify-between items-center gap-2 pb-1">
                     <p className='text-xl font-bold '>All Routines</p>
@@ -52,7 +54,7 @@ function AllRoutines(routines: Array<Routine>) {
                     </div>
                     <div className="right flex-1 flex flex-row justify-between flex-center gap-3">
                         <div className="name"><p className={`font-semibold text-base ${false ? 'text-white' : ''}`}>{routine.name}</p></div>
-                        <div className="time"><p className={`text-[0.6rem]  font-medium ${false ? 'text-white/80' : 'text-secondary'} text-right`}>{routine.type}</p></div>
+                        <div className="time"><p className={`text-[0.6rem]  font-medium ${false ? 'text-white/80' : 'text-secondary'} text-right`}>{capitalize(routine.type)}</p></div>
                     </div>
                 </div>
                 {

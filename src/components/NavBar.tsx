@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom"
 import delay from "../lib/delay"
 const tabIcons = [icons.home, icons.routines, icons.calender, icons.more]
 const tabs = ['Home', 'Routines', 'Calender', 'More']
-const links = ['/home', '/routines', '/calender', '/more']
+const links = ['/', '/routines', '/calender', '/more']
 
 function NavBar({ active }: any) {
     const navigate = useNavigate()

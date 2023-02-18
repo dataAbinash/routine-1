@@ -22,7 +22,7 @@ export function searchActiveRoutine(routines: Array<Routine | any>) {
         if (date > routine.endTime) {
             routine.status = 'done'
         } else if (routine.startTime < date && date < routine.endTime) {
-            // console.log(date)
+
             routine.status = 'active'
             const totalMS = routine.endTime.getTime() - routine.startTime.getTime()
             const currentMS = date.getTime() - routine.startTime.getTime()
@@ -96,7 +96,6 @@ function dayCalendarFilter(routine: Routine, date: Date) {
 
 function dayFilterMonthly(routine: Routine, date: Date) {
     const currentDate = date.getDate()
-    // console.log(currentDate, routine.time)
     if (currentDate in routine.time) {
         const startTimeRoutine = timeSplitter(routine.time[currentDate][0])
         let endTimeRoutine = timeSplitter(routine.time[currentDate][1])
@@ -129,7 +128,6 @@ function dayFilterYearly(routine: Routine, date: Date) {
 function dayFilterWeekly(routine: Routine, date: Date) {
     // Check if the key is available in the current week
     const currentDay = date.getDay()
-    // console.log(currentDate, routine.time)
     if (currentDay in routine.time) {
         const startTimeRoutine = timeSplitter(routine.time[currentDay][0])
         let endTimeRoutine = timeSplitter(routine.time[currentDay][1])

@@ -6,5 +6,5 @@ let e = new Emoji({
 })
 
 export default function TextEmoji({ emoji }: any) {
-    return <img src={e.get(emoji)} alt="" className="inline-block h-[1.3em] align-middle"/>
+    return <img src={e.get(emoji)} alt="" className="inline-block h-[1.3em] align-middle" />
 }

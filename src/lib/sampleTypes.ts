@@ -1,61 +1,144 @@
 const routines = [
     {
-        name: 'Take the cycle',
-        type: 'once',
-        time: ['2023-02-18T10:00', '2023-02-18T11:00'],
-        description: 'Take the cycle to the shop',
-        emoji: '🚲'
-    },
-    {
-        name: 'My Daily Routine',
-        type: 'daily',
-        time: ['19:00', '22:00'],
-        description: 'My Daily Routine to do exercise and other stuff',
-        emoji: '🏃‍♂️'
-    },
-    {
-        name: 'Math Class',
+        name: 'Programming',
+        description: 'Programming for problem solving',
+        emoji: '🧑🏻‍💻',
         type: 'weekly',
         time: {
-            0: ['10:00', '11:00'],
-            6: ['10:00', '11:00'],
+            1: ['10:20', '11:10'],
+            2: ['12:00', '12:50'],
+            3: ['10:20', '11:10'],
+            4: ['12:00', '12:50'],
         },
-        description: 'Math Class on Monday and Saturday by PRD sir',
-        emoji: '📚'
+        sub: 'BUIE-CSE-2'
     },
     {
-        name: 'Salary',
-        type: 'monthly',
+        name: 'Mathematics',
+        description: 'Mathematics-IIA',
+        emoji: '🧮',
+        type: 'weekly',
         time: {
-            0: ['10:00', '11:00'],
-            2: ['10:00', '11:00'],
-            17: ['10:00', '11:00'],
+            1: ['12:00', '12:50'],
+            3: ['11:10', '12:00'],
+            4: ['11:10', '12:00'],
+            5: ['11:10', '12:00'],
         },
-        description: 'Salary on 1st, 3rd and 18th of every month',
-        emoji: '💰'
+        sub: 'BUIE-CSE-2'
     },
     {
-        name: 'This year',
-        type: 'yearly',
+        name: 'Chemistry',
+        description: 'Chemistry-IA',
+        emoji: '🧪',
+        type: 'weekly',
         time: {
-            date: 18,
-            month: 2,
-            time: ['11:00', '12:00']
+            1: ['11:10', '12:00'],
+            2: ['11:10', '12:00'],
+            3: ['12:00', '12:50'],
+            5: ['10:20', '11:10'],
         },
-        description: 'This year on 18th Feb',
-        emoji: '🎂'
-    }, {
-        name: 'Event',
-        type: 'calender',
-        emoji: '',
-        time: '2023-02-18',
-        description: 'Event on 18th Feb',
-    }, {
-        name: 'JavaScript Coding Challenge',
-        type: 'calender',
-        emoji: '🧑🏻‍💻',
-        time: '2023-02-18T10:00',
-        description: 'JavaScript Coding Challenge on 18th Feb at 10:00',
-    }   
+        sub: 'BUIE-CSE-2'
+    },
+    {
+        name: 'Language',
+        description: 'English',
+        emoji: '📚',
+        type: 'weekly',
+        time: {
+            2: ['10:20', '11:10'],
+            4: ['10:20', '11:10'],
+        },
+        sub: 'BUIE-CSE-2'
+    },
+    {
+        name: 'Graphics & Design',
+        description: 'Graphics & Design Class',
+        emoji: '🎨',
+        type: 'weekly',
+        time: {
+            5: ['13:30', '2:20'],
+        },
+        sub: 'BUIE-CSE-2'
+    },
+    {
+        name: 'Programming Lab X',
+        description: 'Let\'s code X group',
+        emoji: '👨🏻‍💻',
+        type: 'weekly',
+        time: {
+            3: ['13:30', '16:40'],
+        },
+        sub: 'BUIE-CSE-2'
+    },
+    {
+        name: 'Programming Lab Y',
+        description: 'Let\'s code Y group',
+        emoji: '👨🏻‍💻',
+        type: 'weekly',
+        time: {
+            1: ['13:30', '16:40'],
+        },
+        sub: 'BUIE-CSE-2'
+    },
+    {
+        name: 'Chemistry Lab X',
+        description: 'Chemistry Lab for X group',
+        emoji: '🧪',
+        type: 'weekly',
+        time: {
+            1: ['13:30', '16:40'],
+        },
+        sub: 'BUIE-CSE-2'
+    },
+    {
+        name: 'Chemistry Lab Y',
+        description: 'Chemistry Lab for Y group',
+        emoji: '🧪',
+        type: 'weekly',
+        time: {
+            3: ['13:30', '16:40'],
+        },
+        sub: 'BUIE-CSE-2'
+    },
+    {
+        name: 'Language Lab X',
+        description: 'English Lab for X group',
+        emoji: '📚',
+        type: 'weekly',
+        time: {
+            2: ['13:30', '16:40'],
+        },
+        sub: 'BUIE-CSE-2'
+    },
+    {
+        name: 'Language Lab Y',
+        description: 'English Lab for Y group',
+        emoji: '📚',
+        type: 'weekly',
+        time: {
+            4: ['13:30', '16:40'],
+        },
+        sub: 'BUIE-CSE-2'
+    },
+    {
+        name: 'Graphics & Design X',
+        description: 'Graphics & Design Lab for X group',
+        emoji: '🎨',
+        type: 'weekly',
+        time: {
+            2: ['13:30', '16:40'],
+        },
+        sub: 'BUIE-CSE-2'
+    },
+    {
+        name: 'Graphics & Design Y',
+        description: 'Graphics & Design Lab for Y group',
+        emoji: '🎨',
+        type: 'weekly',
+        time: {
+            4: ['13:30', '16:40'],
+        },
+        sub: 'BUIE-CSE-2'
+    }
+
 ]
 export default routines

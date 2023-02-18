@@ -10,7 +10,7 @@ function Construction() {
             <p className="font-semibold text-2xl">This screen is under development <TextEmoji emoji="🧑🏻‍💻" /></p>
             <img src={images.undraw_feeling_proud_qne1} className="w-[100%]" />
             <p className="text-secondary text-sm">Made by Abinash</p>
-            <button onClick={() => { delay(() => navigate('/home', { replace: true })) }} className="w-full bg-dark text-white p-4 rounded-xl no-highlight tap99">Go Homepage <TextEmoji emoji="🏠"/></button>
+            <button onClick={() => { delay(() => navigate('/', { replace: true })) }} className="w-full bg-dark text-white p-4 rounded-xl no-highlight tap99 text-sm">Go Homepage <TextEmoji emoji = '🏠'/></button>
         </div>
     )
 }

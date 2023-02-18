@@ -150,7 +150,7 @@ button.btn-full-width.gray {
 }
 
 .tap,
-.tap99 {
+.tap99,.tap97 {
     transition-duration: 80ms;
 }
 
@@ -163,6 +163,12 @@ button.btn-full-width.gray {
 .tap99 {
     &:active {
         scale: 0.99;
+    }
+}
+
+.tap97 {
+    &:active {
+        scale: 0.97;
     }
 }
 
