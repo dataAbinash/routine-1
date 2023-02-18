@@ -68,7 +68,7 @@
             "url": "./?file=index/dataTypes/Arrays",
             "icons": [
                 {
-                    "src": "icons/icon.png",
+                    "src": "icons/icon96.png",
                     "sizes": "96x96"
                 }
             ]
@@ -80,7 +80,7 @@
             "url": "./?file=index/dataTypes/Arrays",
             "icons": [
                 {
-                    "src": "icons/icon.png",
+                    "src": "icons/icon96.png",
                     "sizes": "96x96"
                 }
             ]

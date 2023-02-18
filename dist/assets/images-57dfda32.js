@@ -1,0 +1,1 @@
+const e="/routine/assets/undraw_reading_time_re_phf7-d04e259b.svg",n="/routine/assets/undraw_city_girl_ccpd-0b41e322.svg",_="/routine/assets/undraw_feeling_proud_qne1-c469e378.svg",s="/routine/assets/undraw_add_notes_re_ln36-da92876f.svg",r={undraw_reading_time_re_phf7:e,undraw_city_girl_ccpd:n,undraw_feeling_proud_qne1:_,undraw_add_notes_re_ln36:s},t=r;export{t as i};
