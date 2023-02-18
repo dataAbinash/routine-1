@@ -22,6 +22,10 @@ function NewRoutine() {
                     <img src={icons.check_solid} className='w-11 p-3' />
                 </div>
             </header>
+            <section className='h-[500px] flex items-center justify-center flex-col'>
+                <p className='text-center text-xl font-medium px-10'>This Screen is under Development <br /> <TextEmoji emoji="🧑🏻‍💻"/></p>
+                <p className='text-center px-10 text-gray pt-8'>You would be able to add new  <TextEmoji emoji="😀"/> routines</p>
+            </section>
         </div>
     )
 }
