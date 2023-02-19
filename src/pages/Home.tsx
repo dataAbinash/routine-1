@@ -1,5 +1,5 @@
 import Emoji from 'emoji-store'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import icons from '../assets/icons/icons'
 import '../assets/scss/index.scss'
 import FloatingButton from '../components/FloatingButton'
@@ -9,8 +9,6 @@ import searchByDate, { Routine, searchActiveRoutine } from '../lib/dateMethods'
 import ls from '../lib/storage'
 import TextEmoji from '../components/TextEmoji'
 import { useNavigate } from 'react-router-dom'
-
-
 
 function BlankEmojiLeft() {
 	return (<div className="left opacity-0 select-none">
@@ -24,6 +22,9 @@ function Home() {
 	// const [name, updateName] = useState(1)
 	const [screenRoutines, uTodayRoutine] = useState<any>([])
 	const navigate = useNavigate()
+	const timer1 = useRef<any>(null);
+	const timer2 = useRef<any>(null);
+
 	useEffect(() => {
 		// Check if started using
 		let startedUsing = ls.get('startedUsing')
@@ -31,16 +32,27 @@ function Home() {
 
 		const routines = JSON.parse(ls.get('routines') || '[]')
 		const todayRoutines: Routine[] = searchByDate(new Date(), routines)
+
 		searchActiveRoutine(todayRoutines)
 		uTodayRoutine(todayRoutines)
 
-		// Update subscriptions in background
-		let delayBackgroundUpdate = setTimeout(() => {
+		timer2.current = setInterval(() => {
+			searchActiveRoutine(todayRoutines)
+			uTodayRoutine(todayRoutines)
+			console.log("Refresh")
+		}, 60000)
+
+		timer1.current = setTimeout(() => {
 			backgroundRoutineUpdate()
 			console.log('Check for update...')
 		}, 15000);
-		return () => { clearTimeout(delayBackgroundUpdate) };
+
+		return () => {
+			clearTimeout(timer1.current)
+			clearTimeout(timer2.current)
+		}
 	}, [])
+
 	return (
 		<div className="home-screen screen-navbar select-none">
 			<header className='px-5 py-3 fixed top-0 bg-main max-h-[120px] overflow-hidden w-full z-20'>
