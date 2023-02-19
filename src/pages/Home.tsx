@@ -25,21 +25,28 @@ function Home() {
 	const [screenRoutines, uTodayRoutine] = useState<any>([])
 	const navigate = useNavigate()
 	useEffect(() => {
-		// Check first time 
-		const firstTime = ls.get('firstTime')
-		if (!firstTime) { navigate('/start', { replace: true }) }
+		// Check if started using
+		let startedUsing = ls.get('startedUsing')
+		if (!startedUsing) { navigate('/start', { replace: true }) }
+
 		const routines = JSON.parse(ls.get('routines') || '[]')
 		const todayRoutines: Routine[] = searchByDate(new Date(), routines)
 		searchActiveRoutine(todayRoutines)
 		uTodayRoutine(todayRoutines)
-		// console.clear()
+
+		// Update subscriptions in background
+		let delayBackgroundUpdate = setTimeout(() => {
+			backgroundRoutineUpdate()
+			console.log('Check for update...')
+		}, 15000);
+		return () => { clearTimeout(delayBackgroundUpdate) };
 	}, [])
 	return (
 		<div className="home-screen screen-navbar select-none">
 			<header className='px-5 py-3 fixed top-0 bg-main max-h-[120px] overflow-hidden w-full z-20'>
 				<div className="heading flex flex-row justify-between items-center gap-2 pb-1">
 					<p className='text-xl font-bold '>{/*<TextEmoji emoji="🗓️" />*/}{getCurrentDate()}</p>
-					<div className="notification tap" onClick={() => navigate('/notifications', { replace: true })}>
+					<div className="notification tap" onClick={() => navigate('/notifications')}>
 						<div className="dot absolute h-2 w-2 bg-accent mt-2 ml-7 rounded-full"></div>
 						<img src={icons.notification} className='w-10 p-3 rounded-md opacity-80' />
 					</div>
@@ -58,10 +65,10 @@ function Home() {
 }
 
 function GetRoutines(routines: Array<Routine>) {
-	console.log(routines)
+	// console.log(routines)
 	if (routines.length === 0)
 		return <div className='h-[calc(100dvh-400px)] flex flex-col items-center justify-center'>
-			<p className='text-[#777]/50 text-center my-3 text-lg font-medium'>No routine found</p>
+			<p className='text-[#777]/50 text-center my-3 text-lg font-medium'>No routine for today</p>
 			<p className='text-xs text-center text-[#777]/50 font-medium'>Go to Routines tab to see all routines</p>
 			{/* <p className='text-2xl'><span className='text-[#777]/50 text-center my-3 text-lg font-medium'>there </span><TextEmoji emoji='👉🏻'/></p> */}
 		</div>
@@ -131,4 +138,47 @@ function GetDisplayTime(routine: Routine) {
 		}
 	}
 }
+function backgroundRoutineUpdate() {
+	// check subscription versions and update
+	const subscriptions = JSON.parse(ls.get('subscriptions') || '{}')
+	for (let key in subscriptions) {
+		let sub = subscriptions[key]
+		fetch(`https://dataabinash.github.io/routine/${key}/info.json`)
+			.then(res => res.json())
+			.then((data: any) => {
+				if (data.vcode === sub.vcode) return;
+				updateRoutines(key, data, subscriptions)
+			})
+	}
+}
+
+function updateRoutines(subscriptionKey: string, subData: any, subscriptions: any) {
+	let status = false
+	fetch(`https://dataabinash.github.io/routine/${subscriptionKey}/routine.json`)
+		.then(res => res.json())
+		.then((data: any) => {
+			// Delete all routines having the 'sub' property in the routine
+			const routines = JSON.parse(ls.get('routines') || '[]')
+			const newRoutines = routines.filter((routine: Routine) => {
+				if (routine.sub === subscriptionKey) return false
+				console.log('Updating...' + subscriptionKey)
+				return true
+			})
+			console.log(newRoutines)
+			newRoutines.push(...data)
+			ls.set('routines', JSON.stringify(newRoutines))
+			status = true
+
+			// update subscriptions 
+			subscriptions[subscriptionKey] = subData
+			ls.set('subscriptions', JSON.stringify(subscriptions))
+		}).catch(err => {
+			status = false
+		})
+}
+
+function dailyNotification() {
+
+}
+
 export default Home

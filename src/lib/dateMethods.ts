@@ -12,7 +12,8 @@ export type Routine = {
     status: string,
     percentage: number,
     description: string,
-    emoji: string
+    emoji: string,
+    sub : string,
 }
 
 export function searchActiveRoutine(routines: Array<Routine | any>) {

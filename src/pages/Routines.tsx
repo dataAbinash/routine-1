@@ -27,7 +27,7 @@ function Routines() {
                         <img src={icons.notification} className='w-10 p-3 rounded-md opacity-80' />
                     </div>
                 </div>
-                <input type="search" placeholder='Search Routine' className='search-full' />
+                <input type="search" placeholder='Search in all Routines' className='search-full' />
             </header>
             <section className='p-[1.2rem] pt-[125px] pb-[100px]'>
                 <div className="routines flex flex-col gap-3">
