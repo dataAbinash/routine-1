@@ -12,14 +12,14 @@ function NewRoutine() {
         }, 50);
     }
     return (
-        <div className='new-routine-screen screen'>
+        <div className='new-routine-screen screen dark:text-darkText'>
             <header className='flex p-2 w-full justify-between select-none items-center px-4'>
                 <div className="left tap" onClick={goBack}>
-                    <img src={icons.xmark_solid} className='w-10 p-3' />
+                    <img src={icons.xmark_solid} className='w-10 p-3 dark:invert dark:grayscale' />
                 </div>
                 <div className="center font-medium text-base">New Routine {/*<TextEmoji emoji='😯'/>*/}</div>
                 <div className="right tap">
-                    <img src={icons.check_solid} className='w-11 p-3' />
+                    <img src={icons.check_solid} className='w-11 p-3 dark:invert dark:grayscale' />
                 </div>
             </header>
             <section className='h-[500px] flex items-center justify-center flex-col'>

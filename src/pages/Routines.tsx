@@ -7,6 +7,7 @@ import ls from '../lib/storage'
 import { Routine } from '../lib/dateMethods'
 import FloatingButton from '../components/FloatingButton'
 import { capitalize } from '../lib/lib'
+import Header from '../components/Header'
 
 function Routines() {
     const [screenRoutines, uTodayRoutine] = useState<any>([])
@@ -18,17 +19,9 @@ function Routines() {
         // console.clear()
     }, [])
     return (
-        <div className="home-screen screen-navbar select-none">
-            <header className='px-5 py-3 fixed top-0 bg-main max-h-[120px] overflow-hidden w-full z-20'>
-                <div className="heading flex flex-row justify-between items-center gap-2 pb-1">
-                    <p className='text-xl font-bold '>All Routines</p>
-                    <div className="notification tap opacity-0">
-                        <div className="dot absolute h-2 w-2 bg-accent mt-2 ml-7 rounded-full"></div>
-                        <img src={icons.notification} className='w-10 p-3 rounded-md opacity-80' />
-                    </div>
-                </div>
-                <input type="search" placeholder='Search in all Routines' className='search-full' />
-            </header>
+        <div className="routines-screen screen-navbar select-none dark:bg-black dark:text-darkText">
+			<Header title="All routines" notiIcon={true} placeholder="Search Routine"/>
+
             <section className='p-[1.2rem] pt-[125px] pb-[100px]'>
                 <div className="routines flex flex-col gap-3">
                     {AllRoutines(screenRoutines)}
@@ -45,10 +38,10 @@ function AllRoutines(routines: Array<Routine>) {
     console.log(routines)
     return routines.map((routine: Routine, index) => {
         return (
-            <div className='routine flex flex-col p-[1.2rem] rounded-[1.6rem]  input-bg tap99' key={index}>
+            <div className='routine flex flex-col p-[1.2rem] rounded-[1.6rem]  input-bg tap99 dark:bg-darkInputBg  ' key={index}>
                 <div className="top flex flex-row gap-3">
                     <div className="left">
-                        <div className="emoji bg-main aspect-square flex-center rounded-xl p-2 flex-1">
+                        <div className="emoji bg-main aspect-square flex-center rounded-xl p-2 flex-1 dark:bg-black/40">
                             <img src={Emoji.get(routine.emoji || '⏰')} className='w-[26px] aspect-square' />
                         </div>
                     </div>

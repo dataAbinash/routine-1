@@ -11,11 +11,14 @@ module.exports = {
     colors: {
       accent: '#FB536A',
       dark: '#2F2E41',
+      darkText : '#eee',
       white : '#fff',
       link : 'dodgerblue',
       gray : 'gray',
-      black : 'black'
+      black : 'black',
+      darkInputBg : '#1a1a1a',
     }
   },
   plugins: [],
+  darkMode : 'class'
 }

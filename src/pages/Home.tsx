@@ -1,14 +1,14 @@
 import Emoji from 'emoji-store'
-import { useEffect, useState, useRef } from 'react'
-import icons from '../assets/icons/icons'
+import { useEffect, useRef, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import '../assets/scss/index.scss'
 import FloatingButton from '../components/FloatingButton'
+import Header from '../components/Header'
 import NavBar from '../components/NavBar'
+import TextEmoji from '../components/TextEmoji'
 import getCurrentDate, { getTime } from '../lib/date'
 import searchByDate, { Routine, searchActiveRoutine } from '../lib/dateMethods'
 import ls from '../lib/storage'
-import TextEmoji from '../components/TextEmoji'
-import { useNavigate } from 'react-router-dom'
 
 function BlankEmojiLeft() {
 	return (<div className="left opacity-0 select-none">
@@ -54,17 +54,8 @@ function Home() {
 	}, [])
 
 	return (
-		<div className="home-screen screen-navbar select-none">
-			<header className='px-5 py-3 fixed top-0 bg-main max-h-[120px] overflow-hidden w-full z-20'>
-				<div className="heading flex flex-row justify-between items-center gap-2 pb-1">
-					<p className='text-xl font-bold '>{/*<TextEmoji emoji="🗓️" />*/}{getCurrentDate()}</p>
-					<div className="notification tap" onClick={() => navigate('/notifications')}>
-						<div className="dot absolute h-2 w-2 bg-accent mt-2 ml-7 rounded-full"></div>
-						<img src={icons.notification} className='w-10 p-3 rounded-md opacity-80' />
-					</div>
-				</div>
-				<input type="search" placeholder='Search Routine' className='search-full' />
-			</header>
+		<div className="home-screen screen-navbar select-none dark:bg-black dark:text-darkText">
+			<Header title={getCurrentDate()} notiIcon={true} placeholder="Search Routine"/>
 			<section className='p-[1.2rem] pt-[125px] pb-[100px]'>
 				<div className="routines flex flex-col gap-3">
 					{GetRoutines(screenRoutines)}
@@ -95,16 +86,16 @@ function GetRoutines(routines: Array<Routine>) {
 
 		return (
 			<div className={
-				`routine flex flex-col p-[1.2rem] rounded-[1.6rem] ${isActiveRoutine ? 'bg-accent shadow-accent/40 shadow-lg' : 'input-bg'}
-				tap99 ${isCompleted ? 'opacity-60' : ''}`
+				`routine flex flex-col p-[1.2rem] rounded-[1.6rem] ${isActiveRoutine ? 'bg-accent shadow-accent/40 shadow-lg dark:bg-accent/90' : 'input-bg dark:bg-darkInputBg'}
+				tap99 ${isCompleted ? 'opacity-60' : ''} `
 			} key={index}>
 				<div className="top flex flex-row gap-3">
 					<div className="left">
-						<div className="emoji bg-main aspect-square flex-center rounded-xl p-2 flex-1">
+						<div className={`emoji aspect-square flex-center rounded-xl p-2 flex-1 ${isActiveRoutine ? 'dark:bg-white/20 bg-white/20' : 'dark:bg-black/40 bg-white'}`}>
 							<img src={Emoji.get(routine.emoji || '⏰')} className='w-[26px] aspect-square' />
 						</div>
 					</div>
-					<div className="right flex-1 flex flex-row justify-between flex-center gap-3">
+					<div className={`right flex-1 flex flex-row justify-between flex-center gap-3 `}>
 						<div className="name"><p className={`font-semibold text-base ${isActiveRoutine ? 'text-white' : ''}`}>{routine.name}</p></div>
 						<div className="time"><p className={`text-[0.6rem]  font-medium ${isActiveRoutine ? 'text-white/80' : 'text-secondary'} text-right`}>{GetDisplayTime(routine)}</p></div>
 					</div>

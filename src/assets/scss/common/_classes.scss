@@ -219,3 +219,12 @@ button.btn-full-width.gray {
     outline: 1px solid red;
 
 }
+
+.dark{
+    background-color: black;
+    color: white;
+}
+
+.colorTrans{
+    transition: 100ms color ease-in-out, 100ms background-color ease-in-out;
+}

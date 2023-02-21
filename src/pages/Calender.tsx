@@ -4,10 +4,10 @@ import NavBar from '../components/NavBar'
 
 function Calender() {
     return (
-        <>
+        <div className='screen dark:text-darkText'>
             <Construction />
             <NavBar active={2} />
-        </>
+        </div>
     )
 }
 

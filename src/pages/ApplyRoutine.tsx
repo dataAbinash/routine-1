@@ -21,10 +21,11 @@ function deleteRoutineById(routineID: string) {
 export default function ApplyRoutine() {
     const navigate = useNavigate()
     const [routineID, setRoutineID] = useState<string>('BUIE-CSE-2')
+    const [applyButtonText, setApplyButtonText] = useState<string>('Apply Routine')
     const [isApplyingRoutine, setIsApplyingRoutine] = useState<boolean>(false)
     return (
-        <div className="screen applyRoutine-screen justify-between start-screen p-5 flex select-none flex-col gap-5 min-h-[100dvh]">
-            <h1 className="text-dark text-[1.7rem] font-bold text-center mt-[3vh] p-5">
+        <div className="screen applyRoutine-screen justify-between start-screen p-5 flex select-none flex-col gap-5 min-h-[100dvh] dark:text-darkText">
+            <h1 className="text-dark dark:text-darkText text-[1.7rem] font-bold text-center mt-[3vh] p-5">
                 Select your college or school <span>Routine</span> <br />
                 <TextEmoji emoji="🏫" /> <TextEmoji emoji="📚" /> <TextEmoji emoji="🎒" />
             </h1>
@@ -35,7 +36,7 @@ export default function ApplyRoutine() {
                 <p className="text-center text-base font-medium text-secondary pb-3">Select Preferred Routine</p>
 
                 <select onInput={(e) => { setRoutineID((e.target as HTMLSelectElement).value) }} defaultValue='BUIE-CSE-2'
-                    id="routines" name="routines" className="tap97 p-3 py-5 appearance-none outline-accent rounded-xl input-bg font-medium text-center text-sm">
+                    id="routines" name="routines" className="dark:bg-white/20 tap97 border-none outline-none p-3 py-5 appearance-none outline-accent rounded-xl input-bg font-medium text-center text-sm">
                     <option value="BUIE-CSE-2">BUIE-CSE 2nd Semester</option>
                 </select>
 
@@ -47,7 +48,7 @@ export default function ApplyRoutine() {
                     Skip
                 </button>
                 <button onClick={() => applyRoutine(routineID)} className="flex-[2.5] no-highlight select-none rounded-2xl bg-accent text-white  mx-auto block p-[1.3em] duration-150 active:scale-[0.98] text-sm">
-                    Apply Routine
+                    {applyButtonText}
                 </button>
             </div>
         </div>
@@ -57,7 +58,9 @@ export default function ApplyRoutine() {
         if (routineID === '') return;
         let fetchedRoutines: any = null
         let fetchedSubscriptions: any = null
-
+        if (isApplyingRoutine) return;
+        setApplyButtonText('Applying Routine...')
+        setIsApplyingRoutine(true)
         console.log('Downloading Routine...')
 
         const subscriptionDetailsFetch = fetch(`https://dataabinash.github.io/routine/${routineID}/info.json`)
@@ -93,17 +96,21 @@ export default function ApplyRoutine() {
                     ls.set('routines', JSON.stringify(routines))
                     console.log('Routine Applied Successfully.')
                     ls.set('startedUsing', 'yes')
+                    setApplyButtonText('Routine applied!')
+                    setIsApplyingRoutine(false)
                     console.log('Navigate to /')
                     navigate('/', { replace: true })
                 }
             } else {
                 alert('Cannot find routine. Please check your internet connection and try again.')
+                setApplyButtonText('Apply Routine')
+                setIsApplyingRoutine(false)
             }
         })
     }
 
     function storeSubscriptionDetails(routineID: string) {
-        console.log('Downloadinf Subscription Details...')
+        console.log('Downloading Subscription Details...')
 
     }
 }

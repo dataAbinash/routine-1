@@ -1,10 +1,12 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
 import './assets/scss/index.scss'
 // import Construction from './pages/Construction'
 import Home from './pages/Home'
 import Routines from './pages/Routines'
 import Calender from './pages/Calender'
+import More from './pages/More'
+import { loadTheme } from './lib/theme'
 
 
 const LazyAbout = React.lazy(() => import('./pages/About'))
@@ -13,7 +15,7 @@ const LazyApplyRoutine = React.lazy(() => import('./pages/ApplyRoutine'))
 const LazyNewRoutine = React.lazy(() => import('./pages/NewRoutine'))
 const LazyStart = React.lazy(() => import('./pages/Start'))
 const LazyConstruction = React.lazy(() => import('./pages/Construction'))
-const LazyMore = React.lazy(() => import('./pages/More'))
+// const LazyMore = React.lazy(() => import('./pages/More'))
 
 
 
@@ -30,6 +32,9 @@ function LoadingScreen() {
 
 
 export default function App() {
+  useEffect(() => {
+    loadTheme()
+  }, [])
   return (
     <Router basename='/routine'>
       <React.Suspense fallback={<LoadingScreen />}>
@@ -40,7 +45,7 @@ export default function App() {
           <Route path='/routines' element={< Routines />} />
           <Route path='/newRoutine' element={< LazyNewRoutine />} />
           <Route path='/applyRoutine' element={< LazyApplyRoutine />} />
-          <Route path='/more' element={<LazyMore />} />
+          <Route path='/more' element={<More />} />
           <Route path='/calender' element={< Calender />} />
           <Route path='/notifications' element={< LazyConstruction />} />
         </Routes>
