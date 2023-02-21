@@ -10,12 +10,12 @@ import { capitalize } from '../lib/lib'
 import Header from '../components/Header'
 
 function Routines() {
-    const [screenRoutines, uTodayRoutine] = useState<any>([])
+    const [screenRoutines, uScreenRoutines] = useState<any>([])
     useEffect(() => {
         const routines = JSON.parse(ls.get('routines') || '[]')
         // const todayRoutines: Routine[] = searchByDate(new Date(), routines)
         // searchActiveRoutine(todayRoutines)
-        uTodayRoutine(routines)
+        uScreenRoutines(routines)
         // console.clear()
     }, [])
     return (

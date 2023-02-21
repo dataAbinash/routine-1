@@ -30,13 +30,13 @@ function Home() {
 		let startedUsing = ls.get('startedUsing')
 		if (!startedUsing) { navigate('/start', { replace: true }) }
 
-		const routines = JSON.parse(ls.get('routines') || '[]')
-		const todayRoutines: Routine[] = searchByDate(new Date(), routines)
-
+		let routines = JSON.parse(ls.get('routines') || '[]')
+		let todayRoutines: Routine[] = searchByDate(new Date(), routines)
 		searchActiveRoutine(todayRoutines)
 		uTodayRoutine(todayRoutines)
 
 		timer2.current = setInterval(() => {
+			todayRoutines = searchByDate(new Date(), routines)
 			searchActiveRoutine(todayRoutines)
 			uTodayRoutine(todayRoutines)
 			console.log("Refresh")
@@ -55,7 +55,7 @@ function Home() {
 
 	return (
 		<div className="home-screen screen-navbar select-none dark:bg-black dark:text-darkText">
-			<Header title={getCurrentDate()} notiIcon={true} placeholder="Search Routine"/>
+			<Header title={getCurrentDate()} notiIcon={true} placeholder="Search Routine" />
 			<section className='p-[1.2rem] pt-[125px] pb-[100px]'>
 				<div className="routines flex flex-col gap-3">
 					{GetRoutines(screenRoutines)}
