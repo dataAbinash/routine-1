@@ -6,6 +6,9 @@ import { applyTheme, defaultTheme } from '../lib/theme'
 // import icons from '../assets/icons/icons'
 import Header from '../components/Header'
 import TextEmoji from '../components/TextEmoji'
+import details from '../details/appDetails'
+
+
 
 function More() {
     const navigate = useNavigate()
@@ -62,7 +65,7 @@ function More() {
                             <p className='text-xl font-semibold'>Routine</p>
                         </div>
                         <div className="rig">
-                            <p className='text-sm text-white/70'>v1.0.1 Beta</p>
+                            <p className='text-sm text-white/70'>v{details.version} Beta</p>
                         </div>
                     </div>
                     <p className='text-xl mt-2'> <TextEmoji emoji="😎" /> <TextEmoji emoji="📕" /> <TextEmoji emoji="🧑🏻‍💻" /> <TextEmoji emoji="🎓" /> <TextEmoji emoji="🏠" /> <TextEmoji emoji="😋" /> <TextEmoji emoji="😜" /></p>

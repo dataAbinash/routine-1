@@ -8,6 +8,9 @@ const day = [
     'Friday',
     'Saturday',
 ]
+export function getDay(date: Date) {
+    return day[date.getDay()]
+}
 function currentDate() {
     const date = new Date()
     return ` ${day[date.getDay()]}, ${date.getDate()}  ${months[date.getMonth()]} `
@@ -25,5 +28,18 @@ function addZero(n: number) {
     return n < 10 ? '0' + n : n
 }
 
+export function getFormattedDate(date: Date) {
+    const dt = date.getDate()
+    let suffix = 'th'
+    if (dt === 1 || dt === 21 || dt === 31) { suffix = 'st' }
+    else if (dt === 2 || dt === 22) { suffix = 'nd' }
+    else if (dt === 3 || dt === 23) { suffix = 'rd' }
+    return dt + suffix + ' ' + date.toLocaleString('default', { month: 'short' })
+}
+export function incrementDate(date: Date) {
+	let nextDate = new Date(date)
+	nextDate.setDate(nextDate.getDate() + 1)
+	return nextDate
+}
 
 export default currentDate

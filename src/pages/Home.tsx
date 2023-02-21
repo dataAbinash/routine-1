@@ -6,9 +6,11 @@ import FloatingButton from '../components/FloatingButton'
 import Header from '../components/Header'
 import NavBar from '../components/NavBar'
 import TextEmoji from '../components/TextEmoji'
-import getCurrentDate, { getTime } from '../lib/date'
+import getCurrentDate, { getDay, getTime } from '../lib/date'
 import searchByDate, { Routine, searchActiveRoutine } from '../lib/dateMethods'
 import ls from '../lib/storage'
+import { getFormattedDate, incrementDate } from '../lib/date'
+import delay from '../lib/delay'
 
 function BlankEmojiLeft() {
 	return (<div className="left opacity-0 select-none">
@@ -60,11 +62,48 @@ function Home() {
 				<div className="routines flex flex-col gap-3">
 					{GetRoutines(screenRoutines)}
 				</div>
+				<NewRoutinesLoader />
 			</section>
 			<FloatingButton />
 			<NavBar active={0} />
 		</div>
 	)
+}
+
+
+
+function NewRoutinesLoader() {
+	const [tomorrow, setTomorrow] = useState(new Date())
+	const [routines, setRoutines] = useState<any>([])
+	const lsRoutines = JSON.parse(ls.get('routines') || '[]')
+	return <div className=''>
+		<div className="routines flex flex-col gap-3 mt-3">
+			{routines.length === 0 ? <></> : GetRoutines(routines)}
+		</div>
+		<button className='no-highlight m-auto block mt-10 bg-dark text-white py-4 px-6 text-xs rounded-2xl tap97' onClick={()=>delay(loadMoreRoutines)}>
+			See routines of {getFormattedDate(tomorrow)}
+		</button>
+	</div>
+
+	function loadMoreRoutines() {
+		const notificationRoutine = {
+			name: 'Routines of ' + getFormattedDate(tomorrow) + ', ' + getDay(tomorrow),
+			type: 'notification',
+		}
+		const noRoutine = {
+			name: 'No routine for ' + getFormattedDate(tomorrow) + ', ' + getDay(tomorrow),
+			type: 'notification',
+		}
+		setTomorrow(incrementDate(tomorrow))
+		const newRoutines = searchByDate(tomorrow, lsRoutines)
+		console.log(newRoutines)
+		if (newRoutines.length === 0) {
+			console.log(notificationRoutine)
+			setRoutines([...routines, noRoutine])
+			return
+		}
+		setRoutines([...routines, notificationRoutine, ...newRoutines])
+	}
 }
 
 function GetRoutines(routines: Array<Routine>) {
