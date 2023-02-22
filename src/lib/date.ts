@@ -42,4 +42,11 @@ export function incrementDate(date: Date) {
 	return nextDate
 }
 
+export function getYearMonthDate(date : Date){
+    return date.toISOString().substr(0, 10)
+}
+export function getISODate(date : Date){
+    return date.toISOString().substr(0, 16)
+}
+
 export default currentDate

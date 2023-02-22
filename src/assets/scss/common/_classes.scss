@@ -128,7 +128,14 @@ button.btn-full-width.gray {
         color: var(--placeholder-color);
     }
 }
-
+.btn-full{
+    background-color: var(--dark);
+    color: white;
+    padding: 1.2rem;
+    border-radius: var(--border-radius);
+    margin-top: 0.5rem;
+    user-select: none;
+}
 
 
 .bg-main {
@@ -234,13 +241,14 @@ button.btn-full-width.gray {
 
 }
 
-.input-text{
+.input-text, .input-date, .input-time{
     border: none;
     outline: none;
     width: 100%;
-    padding: 1rem;
+    padding: 1.1rem;
     border-radius: 0.8rem;
     padding-left: 1.5rem;
+    outline: 2px solid transparent;
     // background-repeat: no-repeat;
     // background-size: 1.1em;
     // background-position: 1.2em center;
@@ -250,4 +258,7 @@ button.btn-full-width.gray {
     &:focus{
         outline:2px solid var(--accent);
     }
+}
+.input-date{
+    padding: 1.2rem;
 }
