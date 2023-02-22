@@ -73,14 +73,17 @@ function Home() {
 
 
 function NewRoutinesLoader() {
-	const [tomorrow, setTomorrow] = useState(new Date())
+	const today = new Date()
+	today.setDate(today.getDate() + 1)
 	const [routines, setRoutines] = useState<any>([])
+	const [tomorrow, setTomorrow] = useState(today)
 	const lsRoutines = JSON.parse(ls.get('routines') || '[]')
+
 	return <div className=''>
 		<div className="routines flex flex-col gap-3 mt-3">
 			{routines.length === 0 ? <></> : GetRoutines(routines)}
 		</div>
-		<button className='no-highlight m-auto block mt-10 bg-dark text-white py-4 px-6 text-xs rounded-2xl tap97' onClick={()=>delay(loadMoreRoutines)}>
+		<button className='no-highlight m-auto block mt-10 bg-dark text-white py-4 px-6 text-xs rounded-2xl tap97' onClick={() => delay(loadMoreRoutines)}>
 			See routines of {getFormattedDate(tomorrow)}
 		</button>
 	</div>
