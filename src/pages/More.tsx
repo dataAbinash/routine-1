@@ -7,6 +7,17 @@ import { applyTheme, defaultTheme } from '../lib/theme'
 import Header from '../components/Header'
 import TextEmoji from '../components/TextEmoji'
 import details from '../details/appDetails'
+function changeTheme(theme: any) {
+    ls.set('theme', theme)
+    applyTheme(theme)
+}
+
+function getCurrentTheme() {
+    let theme = localStorage.getItem('theme')
+    if (!theme)
+        theme = 'default'
+    return theme
+}
 
 
 
@@ -30,27 +41,6 @@ function More() {
                 }
             },
             rightArrow: true
-        },
-        {
-            name: 'Apply Dark Mode',
-            icon: icons.shield,
-            callback: () => {
-                applyTheme('dark')
-            }
-        },
-        {
-            name: 'Apply Light Mode',
-            icon: icons.shield,
-            callback: () => {
-                applyTheme('light')
-            }
-        },
-        {
-            name: 'System default theme',
-            icon: icons.shield,
-            callback: () => {
-                defaultTheme()
-            }
         }
     ]
     return (
@@ -84,9 +74,23 @@ function More() {
                             {setting.rightArrow && <div className="arrowContainer opacity-70"><img src={icons.right_arrow_next} className='w-4 opacity-70 dark:invert dark:grayscale' /></div>}
                         </div>
                     })}
+                    <div onClick={() => { }} className="setting flex justify-between items-center px-3 rounded-xl">
+                        <div className="nameIconContainer flex gap-4">
+                            <div className="left"><img src={icons.theme} className='w-[1.35rem] opacity-70 dark:invert dark:grayscale' /></div>
+                            <div className="right"><p className='font-normal'>Theme</p></div>
+                        </div>
+                        <div className="right" onInput={(e: any) => changeTheme(e.target.value)}>
+                            <select defaultValue={getCurrentTheme()} className='appearance-none bg-inputBg dark:bg-darkInputBg p-3 text-sm px-6 text-center w-full outline-none border-none tap rounded-2xl'>
+                                <option value="light">Light</option>
+                                <option value="dark">Dark</option>
+                                <option value="default">System Default</option>
+                            </select>
+                        </div>
+                        {/* <div className="arrowContainer opacity-70"><img src={icons.right_arrow_next} className='w-4 opacity-70 dark:invert dark:grayscale' /></div> */}
+                    </div>
                 </div>
                 <div>
-                    <p className='text-sm text-center mt-20 text-gray'>Made with ❤️ by <a href="https://" target="_blank" className='text-link'>Abinash</a></p>
+                    <p className='text-sm text-center mt-20 text-gray'>Made with ❤️ by <a href="https://github.com/codeAbinash" target="_blank" className='text-link'>Abinash</a></p>
                 </div>
             </section>
             <NavBar active={3} />

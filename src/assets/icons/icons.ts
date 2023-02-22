@@ -19,6 +19,7 @@ import xmark_solid from './src/xmark-solid.svg'
 import notification from './src/notification.svg'
 import right_arrow_next from './src/right_arrow_next.svg'
 import shield from './src/shield.svg'
+import theme from './src/theme.svg'
 
 const icons = {
     Lock, delete_left_solid, home,
@@ -27,7 +28,7 @@ const icons = {
     person, person_broken, left_arrow_solid, left_arrow_long_solid,
     home_black_48dp, routines, calender,
     check_solid, xmark_solid, notification,
-    right_arrow_next, shield
+    right_arrow_next, shield, theme
 }
 
 
