@@ -1,10 +1,10 @@
-import Emoji from 'emoji-store'
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
-import icons from '../assets/icons/icons'
-import TextEmoji from '../components/TextEmoji'
+import Emoji from 'emoji-store';
+import { useNavigate } from 'react-router-dom';
+import icons from '../assets/icons/icons';
 
 function NewRoutine() {
+    const e = new Emoji();
+    let emojiList = ['📕', '🧑🏻‍💻', '🏃🏻‍♂️', '🎨', '👻']
     const navigate = useNavigate()
     function goBack() {
         setTimeout(() => {
@@ -22,9 +22,37 @@ function NewRoutine() {
                     <img src={icons.check_solid} className='w-11 p-3 dark:invert dark:grayscale' />
                 </div>
             </header>
-            <section className='h-[500px] flex items-center justify-center flex-col'>
-                <p className='text-center text-xl font-medium px-10'>This Screen is under Development <br /> <TextEmoji emoji="🧑🏻‍💻"/></p>
-                <p className='text-center px-10 text-gray pt-8'>You would be able to add new  <TextEmoji emoji="😀"/> routines</p>
+            <section className='basic-details p-4 flex flex-col gap-3'>
+                <div className="inputText flex flex-row gap-3">
+                    <img src={Emoji.get('🧑🏻')} className='tap h-[3.5rem] p-[0.8rem] bg-inputBg dark:bg-darkInputBg rounded-2xl' />
+                    <input type="text" placeholder='Routine Name' className='name input-text bg-inputBg dark:bg-darkInputBg ' />
+                </div>
+                <div className="inputText">
+                    <input type="text" placeholder='Routine Description' className='name input-text bg-inputBg dark:bg-darkInputBg ' />
+                </div>
+                <div className="inputSelect flex justify-between items-center gap-3">
+                    <input type="text" placeholder='Custom Emoji' className='name input-text bg-inputBg dark:bg-darkInputBg ' />
+                    <select name="" id="" className='appearance-none p-[1rem] px-7 rounded-2xl trans-outline outline-none focus:outline-accent border-none bg-inputBg dark:bg-darkInputBg text-center'>
+                        <option value="once">Repeat Once</option>
+                        <option value="daily">Repeat Daily</option>
+                        <option value="weekly">Repeat Weekly</option>
+                        <option value="monthly">Repeat Monthly</option>
+                        <option value="yearly">Repeat Yearly</option>
+                        <option value="calendar">Calendar Event</option>
+                    </select>
+                    {/* <img src={e.get('➕')} className='tap bg-inputBg dark:bg-darkInputBg h-[3.5rem] p-[0.8rem] rounded-2xl' /> */}
+                </div>
+
+                <div className="emojis flex gap-3 rounded-2xl flex-wrap justify-between items-center">
+                    {emojiList.map((emoji, index) =>
+                        <img src={e.get(emoji)} className='tap bg-inputBg dark:bg-darkInputBg h-[3.4rem] p-[0.8rem] rounded-2xl' />
+                    )}
+                </div>
+
+                <div className="mt-16 text-center">
+                    <p>This screen is under development</p>
+                </div>
+
             </section>
         </div>
     )
